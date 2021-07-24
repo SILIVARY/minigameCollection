@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 3336075}
   - component: {fileID: 3336076}
   m_Layer: 0
-  m_Name: soundbar1-1 (1)
+  m_Name: EffectSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,8 +148,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3336074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.5, y: 78, z: 0}
-  m_LocalScale: {x: 17.242537, y: 11.4280615, z: 0.4157}
+  m_LocalPosition: {x: 45, y: 47, z: 0}
+  m_LocalScale: {x: 12.043911, y: 7.9825006, z: 0.29036644}
   m_Children:
   - {fileID: 1227139255}
   m_Father: {fileID: 251789612}
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 251789610}
   - component: {fileID: 251789609}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -307,8 +307,9 @@ RectTransform:
   - {fileID: 681845587}
   - {fileID: 1251056079}
   - {fileID: 1200643498}
+  - {fileID: 978141817}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -326,7 +327,7 @@ GameObject:
   - component: {fileID: 269703890}
   - component: {fileID: 269703891}
   m_Layer: 0
-  m_Name: soundbar1-1
+  m_Name: BackgroundSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,8 +341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269703889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.5, y: 116, z: 0}
-  m_LocalScale: {x: 17.242537, y: 11.4280615, z: 0.4157}
+  m_LocalPosition: {x: 45, y: 73.544205, z: 0}
+  m_LocalScale: {x: 12.043911, y: 7.9825006, z: 0.29036644}
   m_Children:
   - {fileID: 832272849}
   m_Father: {fileID: 251789612}
@@ -410,7 +411,7 @@ GameObject:
   - component: {fileID: 394873086}
   - component: {fileID: 394873085}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Text_Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -432,8 +433,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.60125, y: 75.079}
-  m_SizeDelta: {x: 118.7975, y: 44.4208}
+  m_AnchoredPosition: {x: -71.7255, y: 44.95954}
+  m_SizeDelta: {x: 82.9838, y: 31.0293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394873085
 MonoBehaviour:
@@ -457,10 +458,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -488,7 +489,7 @@ GameObject:
   - component: {fileID: 681845587}
   - component: {fileID: 681845588}
   m_Layer: 0
-  m_Name: onoffbar1-1
+  m_Name: onoffbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,8 +503,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681845586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 84.5, y: 10, z: 0}
-  m_LocalScale: {x: 9.462501, y: 9.462501, z: 1.8925}
+  m_LocalPosition: {x: 57.5736, y: -0.50019836, z: 0}
+  m_LocalScale: {x: 6.6095567, y: 6.6095567, z: 1.3219112}
   m_Children:
   - {fileID: 1434380855}
   m_Father: {fileID: 251789612}
@@ -571,7 +572,7 @@ GameObject:
   - component: {fileID: 832272849}
   - component: {fileID: 832272850}
   m_Layer: 0
-  m_Name: barindicator1
+  m_Name: indicator_background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -654,7 +655,7 @@ GameObject:
   - component: {fileID: 840593357}
   - component: {fileID: 840593356}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Text_Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,12 +797,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978141815}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 265, y: 95, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 60, y: -131.4, z: 0}
+  m_LocalScale: {x: 3.8315, y: 3.8315, z: 0.7663}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 251789612}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1200643497
 GameObject:
@@ -814,7 +815,7 @@ GameObject:
   - component: {fileID: 1200643498}
   - component: {fileID: 1200643499}
   m_Layer: 0
-  m_Name: category1-1 (1)
+  m_Name: category_Donate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -828,8 +829,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200643497}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.5, y: -224, z: 0}
-  m_LocalScale: {x: 14.580999, y: 14.580999, z: 1.4581}
+  m_LocalPosition: {x: -57.684097, y: -163.9565, z: 0}
+  m_LocalScale: {x: 10.184828, y: 10.184828, z: 1.0184828}
   m_Children:
   - {fileID: 1205526686}
   m_Father: {fileID: 251789612}
@@ -898,7 +899,7 @@ GameObject:
   - component: {fileID: 1205526688}
   - component: {fileID: 1205526687}
   m_Layer: 5
-  m_Name: Text (5)
+  m_Name: Text_Donate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1031,7 +1032,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227139254
 GameObject:
@@ -1044,7 +1045,7 @@ GameObject:
   - component: {fileID: 1227139255}
   - component: {fileID: 1227139256}
   m_Layer: 0
-  m_Name: barindicator1 (1)
+  m_Name: indicator_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1126,7 +1127,7 @@ GameObject:
   - component: {fileID: 1251056079}
   - component: {fileID: 1251056080}
   m_Layer: 0
-  m_Name: category1-1
+  m_Name: category_Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,8 +1141,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251056078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -80.5, y: -146, z: 0}
-  m_LocalScale: {x: 14.580999, y: 14.580999, z: 1.4581}
+  m_LocalPosition: {x: -57.684097, y: -109.4711, z: 0}
+  m_LocalScale: {x: 10.184828, y: 10.184828, z: 1.0184828}
   m_Children:
   - {fileID: 840593355}
   m_Father: {fileID: 251789612}
@@ -1210,7 +1211,7 @@ GameObject:
   - component: {fileID: 1300548857}
   - component: {fileID: 1300548856}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,8 +1233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.60125, y: 119.5}
-  m_SizeDelta: {x: 118.7975, y: 44.4208}
+  m_AnchoredPosition: {x: -71.7255, y: 75.989006}
+  m_SizeDelta: {x: 82.9838, y: 31.0293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1300548856
 MonoBehaviour:
@@ -1257,10 +1258,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -1288,7 +1289,7 @@ GameObject:
   - component: {fileID: 1434380855}
   - component: {fileID: 1434380856}
   m_Layer: 0
-  m_Name: barindicator1
+  m_Name: indicator_onoff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,7 +1372,7 @@ GameObject:
   - component: {fileID: 1513139705}
   - component: {fileID: 1513139704}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Text_Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1393,8 +1394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100.60125, y: 175.5}
-  m_SizeDelta: {x: 118.7975, y: 44.4208}
+  m_AnchoredPosition: {x: -71.7255, y: 115.1068}
+  m_SizeDelta: {x: 82.9838, y: 31.0293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1513139704
 MonoBehaviour:
@@ -1418,10 +1419,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1450,7 +1451,7 @@ GameObject:
   - component: {fileID: 1526737573}
   - component: {fileID: 1526737572}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Text_Vibration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,8 +1473,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85.7098, y: 10.5}
-  m_SizeDelta: {x: 148.5804, y: 44.4208}
+  m_AnchoredPosition: {x: -61.323357, y: -0.15089417}
+  m_SizeDelta: {x: 103.7881, y: 31.0293}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526737572
 MonoBehaviour:
@@ -1497,10 +1498,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1570,7 +1571,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 281.69513
+  orthographic size: 194.94928
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1594,7 +1595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670984650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 175, y: 281, z: -10}
+  m_LocalPosition: {x: 123, y: 196, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1611,7 +1612,7 @@ GameObject:
   - component: {fileID: 2067267123}
   - component: {fileID: 2067267124}
   m_Layer: 0
-  m_Name: setting1-1
+  m_Name: setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,8 +1626,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067267122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 145, y: 251, z: 0}
-  m_LocalScale: {x: 4.751, y: 4.751, z: 4.751}
+  m_LocalPosition: {x: 99.8347, y: 167.8459, z: 0}
+  m_LocalScale: {x: 3.3185732, y: 3.3185732, z: 3.3185732}
   m_Children: []
   m_Father: {fileID: 251789612}
   m_RootOrder: 0
