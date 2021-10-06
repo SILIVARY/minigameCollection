@@ -54,9 +54,9 @@ public class Pick : MonoBehaviour
     int count;
 
     //스코어
-    int scorecount, pickcount, totalscore;
-    int IScore_1, IScore_2, IScore_3;
-    int OScore_1, OScore_2, OScore_3;
+    static int pickcount, totalscore;
+    static int IScore_1, IScore_2, IScore_3;
+    static int OScore_1, OScore_2, OScore_3;
     [SerializeField] Text Score;
 
     public void Start()
@@ -74,6 +74,9 @@ public class Pick : MonoBehaviour
         pickcount = 0;
 
         totalscore = 0;
+        
+        IScore_1 = 0; IScore_2 = 0; IScore_3 = 0;
+        OScore_1 = 0; OScore_2 = 0; OScore_3 = 0;
     }
     void Update()
     {
@@ -103,21 +106,19 @@ public class Pick : MonoBehaviour
                 {
                     case 2:
                         text_1.text = totalcount.ToString();
-                        IScore_1 = scorecount;
                         break;
                     case 3:
                         text_2.text = totalcount.ToString();
-                        IScore_2 = scorecount;
                         break;
                     case 4:
                         text_3.text = totalcount.ToString();
-                        IScore_3 = scorecount;
                         break;
                 }
             }
             else if (count == 4)
             {
                 timer = 0.0;
+                count++;
                 totalcount_reset();
                 button_reset();
                 waitingTime = 50;
@@ -127,8 +128,16 @@ public class Pick : MonoBehaviour
     public void button1_ChangeImage()
     {
         totalcount = 1;
-        scorecount = 1;
-        IScore_1 = 1; IScore_2 = 1; IScore_3 = 1;
+        
+        switch(count)
+        {
+            case 2:
+            IScore_1 = 1; break;
+            case 3:
+            IScore_2 = 1; break;
+            case 4:
+            IScore_3 = 1; break;
+        }
      
         Debug.Log("1번 들어옴");
         if (a)
@@ -195,9 +204,17 @@ public class Pick : MonoBehaviour
     public void button2_ChangeImage()
     {
         totalcount = 2;
-        scorecount = 2;
-        IScore_1 = 2; IScore_2 = 2; IScore_3 = 2;
         
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 2; break;
+                case 3:
+                IScore_2 = 2; break;
+                case 4:
+                IScore_3 = 2; break;
+            }        
+
         Debug.Log("2번 들어옴");
         if (b)
         {
@@ -262,8 +279,16 @@ public class Pick : MonoBehaviour
     public void button3_ChangeImage()
     {
         totalcount = 3;
-        scorecount = 3;
-        IScore_1 = 3; IScore_2 = 3; IScore_3 = 3;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 3; break;
+                case 3:
+                IScore_2 = 3; break;
+                case 4:
+                IScore_3 = 3; break;
+            }        
 
         Debug.Log("3번 들어옴");
         if (c)
@@ -329,8 +354,16 @@ public class Pick : MonoBehaviour
     public void button4_ChangeImage()
     {
         totalcount = 4;
-        scorecount = 4;
-        IScore_1 = 4; IScore_2 = 4; IScore_3 = 4;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 4; break;
+                case 3:
+                IScore_2 = 4; break;
+                case 4:
+                IScore_3 = 4; break;
+            }        
     
         Debug.Log("4번 들어옴");
         if (d)
@@ -396,8 +429,16 @@ public class Pick : MonoBehaviour
     public void button5_ChangeImage()
     {
         totalcount = 5;
-        scorecount = 5;
-        IScore_1 = 5; IScore_2 = 5; IScore_3 = 5;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 5; break;
+                case 3:
+                IScore_2 = 5; break;
+                case 4:
+                IScore_3 = 5; break;
+            }        
 
         Debug.Log("5번 들어옴");
         if (e)
@@ -463,8 +504,16 @@ public class Pick : MonoBehaviour
     public void button6_ChangeImage()
     {
         totalcount = 6;
-        scorecount = 6;
-        IScore_1 = 6; IScore_2 = 6; IScore_3 = 6;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 6; break;
+                case 3:
+                IScore_2 = 6; break;
+                case 4:
+                IScore_3 = 6; break;
+            }        
 
         Debug.Log("6번 들어옴");
         if (f)
@@ -530,8 +579,16 @@ public class Pick : MonoBehaviour
     public void button7_ChangeImage()
     {
         totalcount = 7;
-        scorecount = 7;
-        IScore_1 = 7; IScore_2 = 7; IScore_3 = 7;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 7; break;
+                case 3:
+                IScore_2 = 7; break;
+                case 4:
+                IScore_3 = 7; break;
+            }        
         
         Debug.Log("7번 들어옴");
         if (g)
@@ -597,8 +654,16 @@ public class Pick : MonoBehaviour
     public void button8_ChangeImage()
     {
         totalcount = 8;
-        scorecount = 8;
-        IScore_1 = 8; IScore_2 = 8; IScore_3 = 8;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 8; break;
+                case 3:
+                IScore_2 = 8; break;
+                case 4:
+                IScore_3 = 8; break;
+            }        
 
         Debug.Log("8번 들어옴");
         if (h)
@@ -664,8 +729,16 @@ public class Pick : MonoBehaviour
     public void button9_ChangeImage()
     {
         totalcount = 9;
-        scorecount = 9;
-        IScore_1 = 9; IScore_2 = 9; IScore_3 = 9;
+ 
+        switch(count)
+            {
+                case 2:
+                IScore_1 = 9; break;
+                case 3:
+                IScore_2 = 9; break;
+                case 4:
+                IScore_3 = 9; break;
+            }        
 
         Debug.Log("9번 들어옴");
         if (i)
