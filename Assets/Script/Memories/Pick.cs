@@ -55,12 +55,16 @@ public class Pick : MonoBehaviour
 
     //스코어
     static int pickcount, totalscore;
-    static int IScore_1, IScore_2, IScore_3;
-    static int OScore_1, OScore_2, OScore_3;
+    static int IScore_1, IScore_2, IScore_3, IScore_4, IScore_5;
+    static int OScore_1, OScore_2, OScore_3, OScore_4, OScore_5;
     [SerializeField] Text Score;
+
+    static int level;
 
     public void Start()
     {
+        cam = Camera.main;
+
         timer = 0.0;
 
         waitingTime = 1.0;
@@ -74,72 +78,79 @@ public class Pick : MonoBehaviour
         pickcount = 0;
 
         totalscore = 0;
-        
-        IScore_1 = 0; IScore_2 = 0; IScore_3 = 0;
-        OScore_1 = 0; OScore_2 = 0; OScore_3 = 0;
+
+        IScore_1 = 0; IScore_2 = 0; IScore_3 = 0; IScore_4 = 0; IScore_5 = 0;
+        OScore_1 = 0; OScore_2 = 0; OScore_3 = 0; OScore_4 = 0; OScore_5 = 0;
+
+        level = 1;
     }
     void Update()
     {
-        if (setTime > 0 && count == 5)
+        if (setTime > 0 && count == 6)
             setTime -= Time.deltaTime;
         else if (setTime <= 0)
-            {
-                Time.timeScale = 0.0f;
-                //SceneManager.LoadScene("Single_Memories_GameOver");
-            }
+        {
+            Time.timeScale = 0.0f;
+            //SceneManager.LoadScene("Single_Memories_GameOver");
+        }
         countdounText.text = Mathf.Round(setTime).ToString();
     }
     public void FixedUpdate()
     {
         timer += Time.deltaTime;
-
-        if (timer > waitingTime)
+        if (count < 6)
         {
-            if (count < 4)
+            if (timer > waitingTime)
             {
-                Debug.Log("업데이트");
-                count++;
-                button_pick();
-                timer = 0.0;
-
-                switch (count)
+                if (count < 4)
                 {
-                    case 2:
-                        text_1.text = totalcount.ToString();
-                        break;
-                    case 3:
-                        text_2.text = totalcount.ToString();
-                        break;
-                    case 4:
-                        text_3.text = totalcount.ToString();
-                        break;
+                    count++;
+                    button_pick();
+                    timer = 0.0;
+
+                    switch (count)
+                    {
+                        case 2:
+                            text_1.text = totalcount.ToString();
+                            break;
+                        case 3:
+                            text_2.text = totalcount.ToString();
+                            break;
+                        case 4:
+                            text_3.text = totalcount.ToString();
+                            break;
+                    }
                 }
-            }
-            else if (count == 4)
-            {
-                timer = 0.0;
-                count++;
-                totalcount_reset();
-                button_reset();
-                waitingTime = 50;
+                else if (count == 4)
+                {
+                    timer = 0.0;
+                    count++;
+                    totalcount_reset();
+                    button_reset();
+                }
+                else if (count == 5)
+                {
+                    button_mix();
+                    timer = 0.0;
+                    count++;
+                }
             }
         }
     }
     public void button1_ChangeImage()
     {
         totalcount = 1;
-        
-        switch(count)
+
+        switch (count)
         {
             case 2:
-            IScore_1 = 1; break;
+                IScore_1 = 1; break;
             case 3:
-            IScore_2 = 1; break;
+                IScore_2 = 1; break;
             case 4:
-            IScore_3 = 1; break;
+                IScore_3 = 1; break;
         }
-     
-        Debug.Log("1번 들어옴");
+
         if (a)
         {
             button1.sprite = button1Sprite;
@@ -170,7 +181,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -183,7 +194,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -196,26 +207,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button2_ChangeImage()
     {
         totalcount = 2;
-        
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 2; break;
-                case 3:
-                IScore_2 = 2; break;
-                case 4:
-                IScore_3 = 2; break;
-            }        
 
-        Debug.Log("2번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 2; break;
+            case 3:
+                IScore_2 = 2; break;
+            case 4:
+                IScore_3 = 2; break;
+        }
+
         if (b)
         {
             button2.sprite = button2Sprite;
@@ -245,7 +255,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -258,7 +268,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -271,26 +281,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button3_ChangeImage()
     {
         totalcount = 3;
- 
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 3; break;
-                case 3:
-                IScore_2 = 3; break;
-                case 4:
-                IScore_3 = 3; break;
-            }        
 
-        Debug.Log("3번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 3; break;
+            case 3:
+                IScore_2 = 3; break;
+            case 4:
+                IScore_3 = 3; break;
+        }
+
         if (c)
         {
             button3.sprite = button3Sprite;
@@ -320,7 +329,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -333,7 +342,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -346,26 +355,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button4_ChangeImage()
     {
         totalcount = 4;
- 
-        switch(count)
-            {
-                case 2:
+
+        switch (count)
+        {
+            case 2:
                 IScore_1 = 4; break;
-                case 3:
+            case 3:
                 IScore_2 = 4; break;
-                case 4:
+            case 4:
                 IScore_3 = 4; break;
-            }        
-    
-        Debug.Log("4번 들어옴");
+        }
+
         if (d)
         {
             button4.sprite = button4Sprite;
@@ -395,7 +403,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -408,7 +416,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -421,26 +429,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button5_ChangeImage()
     {
         totalcount = 5;
- 
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 5; break;
-                case 3:
-                IScore_2 = 5; break;
-                case 4:
-                IScore_3 = 5; break;
-            }        
 
-        Debug.Log("5번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 5; break;
+            case 3:
+                IScore_2 = 5; break;
+            case 4:
+                IScore_3 = 5; break;
+        }
+
         if (e)
         {
             button5.sprite = button5Sprite;
@@ -470,7 +477,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -483,7 +490,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -496,26 +503,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button6_ChangeImage()
     {
         totalcount = 6;
- 
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 6; break;
-                case 3:
-                IScore_2 = 6; break;
-                case 4:
-                IScore_3 = 6; break;
-            }        
 
-        Debug.Log("6번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 6; break;
+            case 3:
+                IScore_2 = 6; break;
+            case 4:
+                IScore_3 = 6; break;
+        }
+
         if (f)
         {
             button6.sprite = button6Sprite;
@@ -545,7 +551,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -558,7 +564,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -571,26 +577,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button7_ChangeImage()
     {
         totalcount = 7;
- 
-        switch(count)
-            {
-                case 2:
+
+        switch (count)
+        {
+            case 2:
                 IScore_1 = 7; break;
-                case 3:
+            case 3:
                 IScore_2 = 7; break;
-                case 4:
+            case 4:
                 IScore_3 = 7; break;
-            }        
-        
-        Debug.Log("7번 들어옴");
+        }
+
         if (g)
         {
             button7.sprite = button7Sprite;
@@ -620,7 +625,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -633,7 +638,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -646,26 +651,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button8_ChangeImage()
     {
         totalcount = 8;
- 
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 8; break;
-                case 3:
-                IScore_2 = 8; break;
-                case 4:
-                IScore_3 = 8; break;
-            }        
 
-        Debug.Log("8번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 8; break;
+            case 3:
+                IScore_2 = 8; break;
+            case 4:
+                IScore_3 = 8; break;
+        }
+
         if (h)
         {
             button8.sprite = button8Sprite;
@@ -695,7 +699,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -708,7 +712,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -721,26 +725,25 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button9_ChangeImage()
     {
         totalcount = 9;
- 
-        switch(count)
-            {
-                case 2:
-                IScore_1 = 9; break;
-                case 3:
-                IScore_2 = 9; break;
-                case 4:
-                IScore_3 = 9; break;
-            }        
 
-        Debug.Log("9번 들어옴");
+        switch (count)
+        {
+            case 2:
+                IScore_1 = 9; break;
+            case 3:
+                IScore_2 = 9; break;
+            case 4:
+                IScore_3 = 9; break;
+        }
+
         if (i)
         {
             button9.sprite = button9Sprite;
@@ -770,7 +773,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 1:
@@ -783,7 +786,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
             case 2:
@@ -796,10 +799,10 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    /*SceneManager.LoadScene("Single_Memories_GameOver");*/
                     break;
                 }
-       }   
+        }
     }
     public void button_reset()
     {
@@ -824,22 +827,20 @@ public class Pick : MonoBehaviour
     }
     public void button_pick()
     {
-        System.Random rand = new System.Random();
-        int num;
-        bool[] chk = new bool[10];
+        ArrayList list = new ArrayList();
 
-        Debug.Log("버튼 픽");
-        while (true)
+        for (int i = 1; i <= 9; i++)
+        list.Add(i);
+
+        System.Random random = new System.Random();
+
+        while (8 < list.Count)
         {
-            num = rand.Next(1, 9);
-            if (!chk[num])
-            {
-                chk[num] = true;
-                break;
-            }
-        }
-        Debug.Log(num);
-        switch (num)
+            int index = random.Next(list.Count);
+            int random_number = (int) list[index];
+            list.RemoveAt(index);
+        
+        switch (random_number)
         {
             case 1: { button1_ChangeImage(); } break;
             case 2: { button2_ChangeImage(); } break;
@@ -851,6 +852,7 @@ public class Pick : MonoBehaviour
             case 8: { button8_ChangeImage(); } break;
             case 9: { button9_ChangeImage(); } break;
         }
+        }
     }
     public void totalcount_reset()
     {
@@ -859,5 +861,84 @@ public class Pick : MonoBehaviour
         text_2.text = totalcount.ToString();
         text_3.text = totalcount.ToString();
     }
-}
+    
+    //버튼 위치 변경
+    public Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
+    private Vector3 position1, position2, position3, position4, position5, position6, position7, position8, position9, posi;
+    private Camera cam;
+    public void button_mix()
+    {
+        position1 = cam.ScreenToWorldPoint(new Vector3(64, 345, cam.nearClipPlane));
+        position2 = cam.ScreenToWorldPoint(new Vector3(164, 345, cam.nearClipPlane));
+        position3 = cam.ScreenToWorldPoint(new Vector3(264, 345, cam.nearClipPlane));
+        position4 = cam.ScreenToWorldPoint(new Vector3(64, 245, cam.nearClipPlane));
+        position5 = cam.ScreenToWorldPoint(new Vector3(164, 245, cam.nearClipPlane));
+        position6 = cam.ScreenToWorldPoint(new Vector3(264, 245, cam.nearClipPlane));
+        position7 = cam.ScreenToWorldPoint(new Vector3(64, 145, cam.nearClipPlane));
+        position8 = cam.ScreenToWorldPoint(new Vector3(164, 145, cam.nearClipPlane));
+        position9 = cam.ScreenToWorldPoint(new Vector3(264, 145, cam.nearClipPlane));
 
+        int posicount = 1;
+
+        ArrayList list = new ArrayList();
+
+        for (int i = 1; i <= 9; i++)
+        list.Add(i);
+        
+        System.Random random = new System.Random();
+
+        while (0< list.Count)
+        {
+            int index = random.Next(list.Count);
+            int random_number = (int) list[index];
+            list.RemoveAt(index);
+
+             switch (random_number)
+            {
+                case 1: posi = position1; break;
+                case 2: posi = position2; break;
+                case 3: posi = position3; break;
+                case 4: posi = position4; break;
+                case 5: posi = position5; break;
+                case 6: posi = position6; break;
+                case 7: posi = position7; break;
+                case 8: posi = position8; break;
+                case 9: posi = position9; break;
+            }
+            switch (posicount)
+            {
+                case 1: btn1.transform.position = posi; posicount++; break;
+                case 2: btn2.transform.position = posi; posicount++; break;
+                case 3: btn3.transform.position = posi; posicount++; break;
+                case 4: btn4.transform.position = posi; posicount++; break;
+                case 5: btn5.transform.position = posi; posicount++; break;
+                case 6: btn6.transform.position = posi; posicount++; break;
+                case 7: btn7.transform.position = posi; posicount++; break;
+                case 8: btn8.transform.position = posi; posicount++; break;
+                case 9: btn9.transform.position = posi; posicount=1; break;
+            }
+        }
+    }
+    public void button_Position_reset()
+    {
+        position1 = cam.ScreenToWorldPoint(new Vector3(64, 345, cam.nearClipPlane));
+        position2 = cam.ScreenToWorldPoint(new Vector3(164, 345, cam.nearClipPlane));
+        position3 = cam.ScreenToWorldPoint(new Vector3(264, 345, cam.nearClipPlane));
+        position4 = cam.ScreenToWorldPoint(new Vector3(64, 245, cam.nearClipPlane));
+        position5 = cam.ScreenToWorldPoint(new Vector3(164, 245, cam.nearClipPlane));
+        position6 = cam.ScreenToWorldPoint(new Vector3(264, 245, cam.nearClipPlane));
+        position7 = cam.ScreenToWorldPoint(new Vector3(64, 145, cam.nearClipPlane));
+        position8 = cam.ScreenToWorldPoint(new Vector3(164, 145, cam.nearClipPlane));
+        position9 = cam.ScreenToWorldPoint(new Vector3(264, 145, cam.nearClipPlane));
+
+        btn1.transform.position = position1;
+        btn2.transform.position = position2;
+        btn3.transform.position = position3;
+        btn4.transform.position = position4;
+        btn5.transform.position = position5;
+        btn6.transform.position = position6;
+        btn7.transform.position = position7;
+        btn8.transform.position = position8;
+        btn9.transform.position = position9;
+    }
+}
