@@ -830,28 +830,28 @@ public class Pick : MonoBehaviour
         ArrayList list = new ArrayList();
 
         for (int i = 1; i <= 9; i++)
-        list.Add(i);
+            list.Add(i);
 
         System.Random random = new System.Random();
 
         while (8 < list.Count)
         {
             int index = random.Next(list.Count);
-            int random_number = (int) list[index];
+            int random_number = (int)list[index];
             list.RemoveAt(index);
-        
-        switch (random_number)
-        {
-            case 1: { button1_ChangeImage(); } break;
-            case 2: { button2_ChangeImage(); } break;
-            case 3: { button3_ChangeImage(); } break;
-            case 4: { button4_ChangeImage(); } break;
-            case 5: { button5_ChangeImage(); } break;
-            case 6: { button6_ChangeImage(); } break;
-            case 7: { button7_ChangeImage(); } break;
-            case 8: { button8_ChangeImage(); } break;
-            case 9: { button9_ChangeImage(); } break;
-        }
+
+            switch (random_number)
+            {
+                case 1: { button1_ChangeImage(); } break;
+                case 2: { button2_ChangeImage(); } break;
+                case 3: { button3_ChangeImage(); } break;
+                case 4: { button4_ChangeImage(); } break;
+                case 5: { button5_ChangeImage(); } break;
+                case 6: { button6_ChangeImage(); } break;
+                case 7: { button7_ChangeImage(); } break;
+                case 8: { button8_ChangeImage(); } break;
+                case 9: { button9_ChangeImage(); } break;
+            }
         }
     }
     public void totalcount_reset()
@@ -861,39 +861,53 @@ public class Pick : MonoBehaviour
         text_2.text = totalcount.ToString();
         text_3.text = totalcount.ToString();
     }
-    
+
     //버튼 위치 변경
     public Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     private Vector3 position1, position2, position3, position4, position5, position6, position7, position8, position9, posi;
     private Camera cam;
     public void button_mix()
     {
-        position1 = cam.ScreenToWorldPoint(new Vector3(64, 345, cam.nearClipPlane));
-        position2 = cam.ScreenToWorldPoint(new Vector3(164, 345, cam.nearClipPlane));
-        position3 = cam.ScreenToWorldPoint(new Vector3(264, 345, cam.nearClipPlane));
-        position4 = cam.ScreenToWorldPoint(new Vector3(64, 245, cam.nearClipPlane));
-        position5 = cam.ScreenToWorldPoint(new Vector3(164, 245, cam.nearClipPlane));
-        position6 = cam.ScreenToWorldPoint(new Vector3(264, 245, cam.nearClipPlane));
-        position7 = cam.ScreenToWorldPoint(new Vector3(64, 145, cam.nearClipPlane));
-        position8 = cam.ScreenToWorldPoint(new Vector3(164, 145, cam.nearClipPlane));
-        position9 = cam.ScreenToWorldPoint(new Vector3(264, 145, cam.nearClipPlane));
+        // position1 = cam.ScreenToWorldPoint(new Vector3(64, 345, cam.nearClipPlane));
+        // position2 = cam.ScreenToWorldPoint(new Vector3(164, 345, cam.nearClipPlane));
+        // position3 = cam.ScreenToWorldPoint(new Vector3(264, 345, cam.nearClipPlane));
+        // position4 = cam.ScreenToWorldPoint(new Vector3(64, 245, cam.nearClipPlane));
+        // position5 = cam.ScreenToWorldPoint(new Vector3(164, 245, cam.nearClipPlane));
+        // position6 = cam.ScreenToWorldPoint(new Vector3(264, 245, cam.nearClipPlane));
+        // position7 = cam.ScreenToWorldPoint(new Vector3(64, 145, cam.nearClipPlane));
+        // position8 = cam.ScreenToWorldPoint(new Vector3(164, 145, cam.nearClipPlane));
+        // position9 = cam.ScreenToWorldPoint(new Vector3(264, 145, cam.nearClipPlane));
+
+
+        position1 = btn1.GetComponent<RectTransform>().anchoredPosition;
+        position2 = btn2.GetComponent<RectTransform>().anchoredPosition;
+        position3 = btn3.GetComponent<RectTransform>().anchoredPosition;
+        position4 = btn4.GetComponent<RectTransform>().anchoredPosition;
+        position5 = btn5.GetComponent<RectTransform>().anchoredPosition;
+        position6 = btn6.GetComponent<RectTransform>().anchoredPosition;
+        position7 = btn7.GetComponent<RectTransform>().anchoredPosition;
+        position8 = btn8.GetComponent<RectTransform>().anchoredPosition;
+        position9 = btn9.GetComponent<RectTransform>().anchoredPosition;
+
+
+
 
         int posicount = 1;
 
         ArrayList list = new ArrayList();
 
         for (int i = 1; i <= 9; i++)
-        list.Add(i);
-        
+            list.Add(i);
+
         System.Random random = new System.Random();
 
-        while (0< list.Count)
+        while (0 < list.Count)
         {
             int index = random.Next(list.Count);
-            int random_number = (int) list[index];
+            int random_number = (int)list[index];
             list.RemoveAt(index);
 
-             switch (random_number)
+            switch (random_number)
             {
                 case 1: posi = position1; break;
                 case 2: posi = position2; break;
@@ -907,15 +921,15 @@ public class Pick : MonoBehaviour
             }
             switch (posicount)
             {
-                case 1: btn1.transform.position = posi; posicount++; break;
-                case 2: btn2.transform.position = posi; posicount++; break;
-                case 3: btn3.transform.position = posi; posicount++; break;
-                case 4: btn4.transform.position = posi; posicount++; break;
-                case 5: btn5.transform.position = posi; posicount++; break;
-                case 6: btn6.transform.position = posi; posicount++; break;
-                case 7: btn7.transform.position = posi; posicount++; break;
-                case 8: btn8.transform.position = posi; posicount++; break;
-                case 9: btn9.transform.position = posi; posicount=1; break;
+                case 1: btn1.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 2: btn2.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 3: btn3.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 4: btn4.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 5: btn5.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 6: btn6.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 7: btn7.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 8: btn8.GetComponent<RectTransform>().anchoredPosition = posi; posicount++; break;
+                case 9: btn9.GetComponent<RectTransform>().anchoredPosition = posi; posicount = 1; break;
             }
         }
     }
