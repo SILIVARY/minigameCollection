@@ -40,7 +40,7 @@ public class Pick : MonoBehaviour
 
     //카운트다운
     [SerializeField] float setTime = 10.0f;
-    [SerializeField] Text countdounText;
+    [SerializeField] Text countdownText;
 
     //텍스트 값 입력
     [SerializeField] Text text_1;
@@ -62,6 +62,7 @@ public class Pick : MonoBehaviour
     [SerializeField] Text Score;
 
     static int level;
+    [SerializeField] Text LevelText;
 
     public void Start()
     {
@@ -73,7 +74,7 @@ public class Pick : MonoBehaviour
 
         count = 1;
 
-        countdounText.text = setTime.ToString();
+        countdownText.text = setTime.ToString();
 
         totalcount = 0;
 
@@ -97,7 +98,7 @@ public class Pick : MonoBehaviour
                 Time.timeScale = 0.0f;
                 //SceneManager.LoadScene("Single_Memories_GameOver");
             }
-            countdounText.text = Mathf.Round(setTime).ToString();
+            countdownText.text = Mathf.Round(setTime).ToString();
         }
         else if (level > 3)
         {
@@ -108,9 +109,9 @@ public class Pick : MonoBehaviour
                 Time.timeScale = 0.0f;
                 //SceneManager.LoadScene("Single_Memories_GameOver");
             }
-            countdounText.text = Mathf.Round(setTime).ToString();
+            countdownText.text = Mathf.Round(setTime).ToString();
         }
-
+        levelPlus();
     }
     public void FixedUpdate()
     {
@@ -235,9 +236,13 @@ public class Pick : MonoBehaviour
         OScore_1 = 1;
         OScore_2 = 1;
         OScore_3 = 1;
-
-        switch (pickcount)
+        OScore_4 = 1;
+        OScore_5 = 1;
+        
+        if (level <= 3)
         {
+        switch (pickcount)
+        {   
             case 0:
                 if (IScore_1 == OScore_1)
                 {
@@ -248,7 +253,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -261,7 +266,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -274,9 +279,81 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
+        }
+        }
+        if (level > 3)
+        {
+        switch (pickcount)
+        {   
+            case 0:
+                if (IScore_1 == OScore_1)
+                {
+                    totalscore += 100;
+                    Score.text = totalscore.ToString();
+                    pickcount++;
+                    break;
+                }
+                else
+                {
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
+                    break;
+                }
+            case 1:
+                if (IScore_2 == OScore_2)
+                {
+                    totalscore += 100;
+                    Score.text = totalscore.ToString();
+                    pickcount++;
+                    break;
+                }
+                else
+                {
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
+                    break;
+                }
+            case 2:
+                if (IScore_3 == OScore_3)
+                {
+                    totalscore += 100;
+                    Score.text = totalscore.ToString();
+                    pickcount++;
+                    break;
+                }
+                else
+                {
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
+                    break;
+                }
+            case 3:
+                if (IScore_4 == OScore_4)
+                {
+                    totalscore += 100;
+                    Score.text = totalscore.ToString();
+                    pickcount++;
+                    break;
+                }
+                else
+                {
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
+                    break;
+                }
+            case 4:
+                if (IScore_5 == OScore_5)
+                {
+                    totalscore += 100;
+                    Score.text = totalscore.ToString();
+                    pickcount++;
+                    break;
+                }
+                else
+                {
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
+                    break;
+                }
+        }
         }
     }
     public void button2_ChangeImage()
@@ -322,7 +399,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -335,7 +412,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -348,7 +425,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -396,7 +473,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -409,7 +486,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -422,7 +499,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -470,7 +547,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -483,7 +560,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -496,7 +573,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -544,7 +621,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -557,7 +634,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -570,7 +647,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -618,7 +695,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -631,7 +708,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -644,7 +721,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -692,7 +769,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -705,7 +782,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -718,7 +795,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -766,7 +843,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -779,7 +856,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -792,7 +869,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -840,7 +917,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 1:
@@ -853,7 +930,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
             case 2:
@@ -866,7 +943,7 @@ public class Pick : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("Single_Memories_GameOver");
+                    //SceneManager.LoadScene("Single_Memories_GameOver");
                     break;
                 }
         }
@@ -927,8 +1004,36 @@ public class Pick : MonoBehaviour
         text_1.text = totalcount.ToString();
         text_2.text = totalcount.ToString();
         text_3.text = totalcount.ToString();
+        text_4.text = totalcount.ToString();
+        text_5.text = totalcount.ToString();
     }
-
+    public void levelPlus()
+    {
+        if (totalscore >= 300)
+        {
+            level = 2;
+        }
+        if (totalscore >= 600)
+        {
+            level = 3;
+        }
+        if (totalscore >= 900)
+        {
+            level = 4;
+        }
+        if (totalscore >= 1400)
+        {
+            level = 5;
+        }
+        if (totalscore >= 1900)
+        {
+            level = 6;
+        }
+        if (totalscore >= 2400)
+        {
+            level = 7;
+        }
+    }
     //버튼 위치 변경
     public Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     private Vector3 position1, position2, position3, position4, position5, position6, position7, position8, position9, posi;
