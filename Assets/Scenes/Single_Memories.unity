@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5019536, g: 0.5019536, b: 0.5019536, a: 1}
+  m_IndirectSpecularColor: {r: 0.5018472, g: 0.5018472, b: 0.5018472, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -442,6 +442,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -482,11 +484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e0734246eb0e2e43af00fc27f14d768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedCount: 0
-  clicked1: {fileID: 0}
-  clicked2: {fileID: 0}
-  position1: {x: 0, y: 0, z: 0}
-  position2: {x: 0, y: 0, z: 0}
 --- !u!4 &199521749
 Transform:
   m_ObjectHideFlags: 0
@@ -741,6 +738,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -786,7 +785,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -76.24512, y: -93.25}
+  m_AnchoredPosition: {x: -74.5, y: -93.25}
   m_SizeDelta: {x: 15.0099945, y: 18.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292351626
@@ -1071,6 +1070,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -1463,6 +1464,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -1714,6 +1717,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -1759,8 +1764,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 265, y: -227}
-  m_SizeDelta: {x: 48.268, y: 30}
+  m_AnchoredPosition: {x: -26.3, y: -40.3}
+  m_SizeDelta: {x: 65.49, y: 47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886053478
 MonoBehaviour:
@@ -2115,7 +2120,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.74023, y: -34.700195}
+  m_AnchoredPosition: {x: -135, y: -34.700195}
   m_SizeDelta: {x: 121, y: 37}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1014087275
@@ -2372,7 +2377,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 332.96997, y: -226.99997}
+  m_AnchoredPosition: {x: 41.669952, y: -40.299927}
   m_SizeDelta: {x: 48.264, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112236064
@@ -2451,7 +2456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -151.8}
+  m_AnchoredPosition: {x: 0, y: -151.79997}
   m_SizeDelta: {x: -25.200005, y: -433.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142553717
@@ -2732,6 +2737,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -2983,6 +2990,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -3369,6 +3378,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -3778,6 +3789,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 0}
+  text_5: {fileID: 0}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
@@ -3955,6 +3968,8 @@ MonoBehaviour:
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}
   text_3: {fileID: 1379438048}
+  text_4: {fileID: 886053478}
+  text_5: {fileID: 1112236064}
   totalcount: 0
   Score: {fileID: 292351626}
   btn1: {fileID: 754051728}
