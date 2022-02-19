@@ -66,8 +66,6 @@ public class Pick : MonoBehaviour
 
     public void Start()
     {
-        cam = Camera.main;
-
         timer = 0.0;
 
         waitingTime = 1.0;
@@ -85,7 +83,7 @@ public class Pick : MonoBehaviour
         IScore_1 = 0; IScore_2 = 0; IScore_3 = 0; IScore_4 = 0; IScore_5 = 0;
         OScore_1 = 0; OScore_2 = 0; OScore_3 = 0; OScore_4 = 0; OScore_5 = 0;
 
-        level = 4;
+        level = 1;
     }
     void Update()
     {
@@ -1037,7 +1035,6 @@ public class Pick : MonoBehaviour
     //버튼 위치 변경
     public Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
     private Vector3 position1, position2, position3, position4, position5, position6, position7, position8, position9, posi;
-    private Camera cam;
     public void button_mix()
     {
         position1 = btn1.GetComponent<RectTransform>().anchoredPosition;
