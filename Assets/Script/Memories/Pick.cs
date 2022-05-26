@@ -39,7 +39,7 @@ public class Pick : MonoBehaviour
     bool a = true, b = true, c = true, d = true, e = true, f = true, g = true, h = true, i = true;
 
     //카운트다운
-    [SerializeField] float setTime = 10.0f;
+    [SerializeField] float setTime = 5.0f;
     [SerializeField] Text countdownText;
 
     //텍스트 값 입력
@@ -946,27 +946,29 @@ public class Pick : MonoBehaviour
                 }
         }
     }
+
     public void button_reset()
     {
-        if (!a)
-            button1_ChangeImage();
-        if (!b)
-            button2_ChangeImage();
-        if (!c)
-            button3_ChangeImage();
-        if (!d)
-            button4_ChangeImage();
-        if (!e)
-            button5_ChangeImage();
-        if (!f)
-            button6_ChangeImage();
-        if (!g)
-            button7_ChangeImage();
-        if (!h)
-            button8_ChangeImage();
-        if (!i)
-            button9_ChangeImage();
+        a = false;
+        b = false;
+        c = false;
+        d = false;
+        e = false;
+        f = false;
+        g = false;
+        h = false;
+        i = false;
+        button1_ChangeImage();
+        button2_ChangeImage();
+        button3_ChangeImage();
+        button4_ChangeImage();
+        button5_ChangeImage();
+        button6_ChangeImage();
+        button7_ChangeImage();
+        button8_ChangeImage();
+        button9_ChangeImage();
     }
+
     public void button_pick()
     {
         ArrayList list = new ArrayList();
@@ -1060,8 +1062,22 @@ public class Pick : MonoBehaviour
         list_btn.Add(btn8);
         list_btn.Add(btn9);
 
-        for(int i = 0; i<list_btn.Count; i++)
-        list_position[i] = list_btn[i].GetComponent<RectTransform>().anchoredPosition;   
+        position1 = btn1.GetComponent<RectTransform>().anchoredPosition;
+        position2 = btn2.GetComponent<RectTransform>().anchoredPosition;
+        position3 = btn3.GetComponent<RectTransform>().anchoredPosition;
+        position4 = btn4.GetComponent<RectTransform>().anchoredPosition;
+        position5 = btn5.GetComponent<RectTransform>().anchoredPosition;
+        position6 = btn6.GetComponent<RectTransform>().anchoredPosition;
+        position7 = btn7.GetComponent<RectTransform>().anchoredPosition;
+        position8 = btn8.GetComponent<RectTransform>().anchoredPosition;
+        position9 = btn9.GetComponent<RectTransform>().anchoredPosition;
+
+
+        for(int i = 0; i<9; i++)
+        {
+            list_position[i] = list_btn[i].GetComponent<RectTransform>().anchoredPosition;   
+        }
+        
         int posicount = 1;
 
         ArrayList list = new ArrayList();
@@ -1106,13 +1122,14 @@ public class Pick : MonoBehaviour
     public void button_Position_reset()
     {
         for(int i = 0; i<list_btn.Count; i++)
-        { 
-            list_position[i] = list_btn[i].GetComponent<RectTransform>().anchoredPosition;
-            list_btn[i].transform.position =list_position[i];
+        {   
+            list_btn[i].GetComponent<RectTransform>().anchoredPosition = list_position[i];
         }
     }
     public void All_reset()
     {       
+        setTime = 10.0f;
+
         timer = 0.0;
 
         count = 1;
@@ -1123,9 +1140,30 @@ public class Pick : MonoBehaviour
 
         pickcount = 0;
 
-        totalscore = 0;
-
         IScore_1 = 0; IScore_2 = 0; IScore_3 = 0; IScore_4 = 0; IScore_5 = 0;
         OScore_1 = 0; OScore_2 = 0; OScore_3 = 0; OScore_4 = 0; OScore_5 = 0;
+
+        if (level <= 3)
+        {
+            if (setTime > 0 && count == 6)
+                setTime -= Time.deltaTime;
+            else if (setTime <= 0)
+            {
+                Time.timeScale = 0.0f;
+                SceneManager.LoadScene("Single_Memories_GameOver");
+            }
+            countdownText.text = Mathf.Round(setTime).ToString();
+        }
+        else if (level > 3)
+        {
+            if (setTime > 0 && count == 8)
+                setTime -= Time.deltaTime;
+            else if (setTime <= 0)
+            {
+                Time.timeScale = 0.0f;
+                SceneManager.LoadScene("Single_Memories_GameOver");
+            }
+            countdownText.text = Mathf.Round(setTime).ToString();
+        }
     }
 }
