@@ -68,8 +68,9 @@ public class Pick : MonoBehaviour
     public void Start()
     {
         All_reset();
-        waitingTime = 1.0;
         level = 1;
+        LevelText.text = level.ToString();
+        totalscore = 0;
     }
     void Update()
     {
@@ -100,57 +101,85 @@ public class Pick : MonoBehaviour
     public void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (level <= 3)
+        if (level == 1)
         {
-            if (count < 6)
+            setTime = 7.0f;
+            button3Pick();
+        }
+        else if (level == 2)
+        {
+            setTime = 5.0f;
+            button3Pick();
+        }
+        else if (level == 3)
+        {
+            setTime = 3.0f;
+            button3Pick();
+        }
+        else if (level == 4)
+        {
+            button5Pick();
+        }
+        else if (level == 5)
+        {
+            button5Pick();
+        }
+        else if (level == 6)
+        {
+            button5Pick();
+        }
+        else if (level == 7)
+        {
+            button5Pick();
+        }
+    }
+    public void button3Pick()
+    {
+        LevelText.text = level.ToString();
+        if (timer > waitingTime)
+        {
+            if (count < 4)
             {
-                if (timer > waitingTime)
+                count++;
+                button_pick();
+                timer = 0.0;
+                switch (count)
                 {
-                    if (count < 4)
-                    {
-                        count++;
-                        button_pick();
-                        timer = 0.0;
-
-                        switch (count)
-                        {
-                            case 2:
-                                text_1.text = totalcount.ToString();
-                                break;
-                            case 3:
-                                text_2.text = totalcount.ToString();
-                                break;
-                            case 4:
-                                text_3.text = totalcount.ToString();
-                                break;
-                        }
-                    }
-                    else if (count == 4)
-                    {
-                        timer = 0.0;
-                        count++;
-                        totalcount_reset();
-                        button_reset();
-                    }
-                    else if (count == 5)
-                    {
-                        button_mix();
-                        timer = 0.0;
-                        count++;
-                    }
+                    case 2:
+                        text_1.text = totalcount.ToString();
+                        break;
+                    case 3:
+                        text_2.text = totalcount.ToString();
+                        break;
+                    case 4:
+                        text_3.text = totalcount.ToString();
+                        break;
                 }
             }
-            if (pickcount == 3)
+            else if (count == 4)
             {
-                button_Position_reset();
+                timer = 0.0;
+                count++;
+                totalcount_reset();
                 button_reset();
-                All_reset();
-                level++;
+            }
+            else if (count == 5)
+            {
+                button_mix();
+                timer = 0.0;
+                count++;
             }
         }
-        else if (level > 3)
+        if (pickcount == 3)
         {
-            if (count < 8)
+            button_Position_reset();
+            button_reset();
+            All_reset();
+        }
+    }
+    public void button5Pick()
+    {
+        if (count < 8)
             {
                 if (timer > waitingTime)
                 {
@@ -194,14 +223,12 @@ public class Pick : MonoBehaviour
                     }
                 }
             }
-        }
-        if (pickcount == 5)
-            {
-                button_Position_reset();
-                button_reset();
-                All_reset();
-                level++;
-            }
+            if (pickcount == 5)
+                {
+                    button_Position_reset();
+                    button_reset();
+                    All_reset();
+                }
     }
     public void button1_ChangeImage()
     {
@@ -210,11 +237,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 1; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 1; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 1; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (a)
@@ -239,119 +270,119 @@ public class Pick : MonoBehaviour
         
         if (level <= 3)
         {
-        switch (pickcount)
-        {   
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
-        }
-        if (level > 3)
+        else if (level > 3)
         {
-        switch (pickcount)
-        {   
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 3:
-                if (IScore_4 == OScore_4)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 4:
-                if (IScore_5 == OScore_5)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-        }
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button2_ChangeImage()
@@ -361,13 +392,16 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 2; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 2; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 2; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
-
         if (b)
         {
             button2.sprite = button2Sprite;
@@ -384,48 +418,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 2;
         OScore_2 = 2;
         OScore_3 = 2;
+        OScore_4 = 2;
+        OScore_5 = 2;
 
-        switch (pickcount)
+        if (level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button3_ChangeImage()
@@ -435,11 +545,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 3; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 3; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 3; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (c)
@@ -458,48 +572,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 3;
         OScore_2 = 3;
         OScore_3 = 3;
+        OScore_4 = 3;
+        OScore_5 = 3;
 
-        switch (pickcount)
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if(level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button4_ChangeImage()
@@ -509,11 +699,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 4; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 4; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 4; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (d)
@@ -532,48 +726,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 4;
         OScore_2 = 4;
         OScore_3 = 4;
+        OScore_4 = 4;
+        OScore_5 = 4;
 
-        switch (pickcount)
+        if (level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button5_ChangeImage()
@@ -583,11 +853,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 5; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 5; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 5; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (e)
@@ -606,48 +880,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 5;
         OScore_2 = 5;
         OScore_3 = 5;
+        OScore_4 = 5;
+        OScore_5 = 5;
 
-        switch (pickcount)
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button6_ChangeImage()
@@ -657,11 +1007,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 6; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 6; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 6; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (f)
@@ -680,48 +1034,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 6;
         OScore_2 = 6;
         OScore_3 = 6;
-
-        switch (pickcount)
+        OScore_4 = 6;
+        OScore_5 = 6;
+        
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button7_ChangeImage()
@@ -731,11 +1161,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 7; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 7; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 7; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (g)
@@ -754,48 +1188,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 7;
         OScore_2 = 7;
         OScore_3 = 7;
-
-        switch (pickcount)
+        OScore_4 = 7;
+        OScore_5 = 7;
+        
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button8_ChangeImage()
@@ -805,11 +1315,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 8; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 8; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 8; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (h)
@@ -828,48 +1342,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 8;
         OScore_2 = 8;
         OScore_3 = 8;
-
-        switch (pickcount)
+        OScore_4 = 8;
+        OScore_5 = 8;
+        
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
     public void button9_ChangeImage()
@@ -879,11 +1469,15 @@ public class Pick : MonoBehaviour
         switch (count)
         {
             case 2:
-                IScore_1 = 9; break;
+                IScore_1 = totalcount; break;
             case 3:
-                IScore_2 = 9; break;
+                IScore_2 = totalcount; break;
             case 4:
-                IScore_3 = 9; break;
+                IScore_3 = totalcount; break;
+            case 5:
+                IScore_4 = totalcount; break;
+            case 6:
+                IScore_5 = totalcount; break;
         }
 
         if (i)
@@ -902,48 +1496,124 @@ public class Pick : MonoBehaviour
         OScore_1 = 9;
         OScore_2 = 9;
         OScore_3 = 9;
-
-        switch (pickcount)
+        OScore_4 = 9;
+        OScore_5 = 9;
+        
+        if(level <= 3)
         {
-            case 0:
-                if (IScore_1 == OScore_1)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 1:
-                if (IScore_2 == OScore_2)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
-            case 2:
-                if (IScore_3 == OScore_3)
-                {
-                    totalscore += 100;
-                    Score.text = totalscore.ToString();
-                    pickcount++;
-                    break;
-                }
-                else
-                {
-                SceneManager.LoadScene("Single_Memories_GameOver");
-                    break;
-                }
+            switch (pickcount)
+            {
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
+        }
+        else if (level > 3)
+        {
+            switch (pickcount)
+            {   
+                case 0:
+                    if (IScore_1 == OScore_1)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 1:
+                    if (IScore_2 == OScore_2)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 2:
+                    if (IScore_3 == OScore_3)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 3:
+                    if (IScore_4 == OScore_4)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+                case 4:
+                    if (IScore_5 == OScore_5)
+                    {
+                        totalscore += 100;
+                        Score.text = totalscore.ToString();
+                        pickcount++;
+                        break;
+                    }
+                    else
+                    {
+                    SceneManager.LoadScene("Single_Memories_GameOver");
+                        break;
+                    }
+            }
         }
     }
 
@@ -986,15 +1656,15 @@ public class Pick : MonoBehaviour
 
             switch (random_number)
             {
-                case 1: { button1_ChangeImage(); } break;
-                case 2: { button2_ChangeImage(); } break;
-                case 3: { button3_ChangeImage(); } break;
-                case 4: { button4_ChangeImage(); } break;
-                case 5: { button5_ChangeImage(); } break;
-                case 6: { button6_ChangeImage(); } break;
-                case 7: { button7_ChangeImage(); } break;
-                case 8: { button8_ChangeImage(); } break;
-                case 9: { button9_ChangeImage(); } break;
+                case 1: {button1_ChangeImage();} break;
+                case 2: {button2_ChangeImage();} break;
+                case 3: {button3_ChangeImage();} break;
+                case 4: {button4_ChangeImage();} break;
+                case 5: {button5_ChangeImage();} break;
+                case 6: {button6_ChangeImage();} break;
+                case 7: {button7_ChangeImage();} break;
+                case 8: {button8_ChangeImage();} break;
+                case 9: {button9_ChangeImage();} break;
             }
         }
     }
@@ -1009,29 +1679,14 @@ public class Pick : MonoBehaviour
     }
     public void levelPlus()
     {
-        if (totalscore >= 300)
+        switch (totalscore)
         {
-            level = 2;
-        }
-        if (totalscore >= 600)
-        {
-            level = 3;
-        }
-        if (totalscore >= 900)
-        {
-            level = 4;
-        }
-        if (totalscore >= 1400)
-        {
-            level = 5;
-        }
-        if (totalscore >= 1900)
-        {
-            level = 6;
-        }
-        if (totalscore >= 2400)
-        {
-            level = 7;
+            case 300: level = 2; break;
+            case 600: level = 3; break;
+            case 900: level = 4; break;
+            case 1400: level = 5; break;
+            case 1900: level = 6; break;
+            case 2400: level = 7; break;
         }
     }
     //버튼 위치 변경
@@ -1128,7 +1783,9 @@ public class Pick : MonoBehaviour
     }
     public void All_reset()
     {       
-        setTime = 10.0f;
+        waitingTime = 1.0;
+
+        setTime = 5.0f;
 
         timer = 0.0;
 
@@ -1142,28 +1799,5 @@ public class Pick : MonoBehaviour
 
         IScore_1 = 0; IScore_2 = 0; IScore_3 = 0; IScore_4 = 0; IScore_5 = 0;
         OScore_1 = 0; OScore_2 = 0; OScore_3 = 0; OScore_4 = 0; OScore_5 = 0;
-
-        if (level <= 3)
-        {
-            if (setTime > 0 && count == 6)
-                setTime -= Time.deltaTime;
-            else if (setTime <= 0)
-            {
-                Time.timeScale = 0.0f;
-                SceneManager.LoadScene("Single_Memories_GameOver");
-            }
-            countdownText.text = Mathf.Round(setTime).ToString();
-        }
-        else if (level > 3)
-        {
-            if (setTime > 0 && count == 8)
-                setTime -= Time.deltaTime;
-            else if (setTime <= 0)
-            {
-                Time.timeScale = 0.0f;
-                SceneManager.LoadScene("Single_Memories_GameOver");
-            }
-            countdownText.text = Mathf.Round(setTime).ToString();
-        }
     }
 }
