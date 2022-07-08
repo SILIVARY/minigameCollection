@@ -3972,7 +3972,7 @@ MonoBehaviour:
   button9: {fileID: 284542466}
   button9Sprite: {fileID: 21300000, guid: bdabf7c1dbfe66e458b69ff3343af939, type: 3}
   button9Image2: {fileID: 21300000, guid: aeb3eec79712bfc4ea0565311397ee14, type: 3}
-  setTime: 5
+  setTime: 0
   countdownText: {fileID: 1395935641}
   text_1: {fileID: 945398238}
   text_2: {fileID: 924036550}

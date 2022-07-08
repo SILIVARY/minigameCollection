@@ -39,8 +39,9 @@ public class Pick : MonoBehaviour
     bool a = true, b = true, c = true, d = true, e = true, f = true, g = true, h = true, i = true;
 
     //카운트다운
-    [SerializeField] float setTime = 5.0f;
+    [SerializeField] float setTime;
     [SerializeField] Text countdownText;
+    bool t = true;
 
     //텍스트 값 입력
     [SerializeField] Text text_1;
@@ -74,6 +75,19 @@ public class Pick : MonoBehaviour
     }
     void Update()
     {
+        if(t)
+        {
+            switch (level)
+            {
+                case 1: setTime = 7.0f; t= false; break;
+                case 2: setTime = 5.0f; t= false; break;
+                case 3: setTime = 3.0f; t= false; break;
+                case 4: setTime = 5.0f; t= false; break;
+                case 5: setTime = 4.0f; t= false; break;
+                case 6: setTime = 3.0f; t= false; break;
+                case 7: setTime = 2.0f; t= false; break;
+            }
+        }
         if (level <= 3)
         {
             if (setTime > 0 && count == 6)
@@ -96,139 +110,107 @@ public class Pick : MonoBehaviour
             }
             countdownText.text = Mathf.Round(setTime).ToString();
         }
-        levelPlus();
     }
     public void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (level == 1)
-        {
-            setTime = 7.0f;
-            button3Pick();
-        }
-        else if (level == 2)
-        {
-            setTime = 5.0f;
-            button3Pick();
-        }
-        else if (level == 3)
-        {
-            setTime = 3.0f;
-            button3Pick();
-        }
-        else if (level == 4)
-        {
-            button5Pick();
-        }
-        else if (level == 5)
-        {
-            button5Pick();
-        }
-        else if (level == 6)
-        {
-            button5Pick();
-        }
-        else if (level == 7)
-        {
-            button5Pick();
-        }
+        MainPick();
     }
-    public void button3Pick()
+    public void MainPick()
     {
         LevelText.text = level.ToString();
         if (timer > waitingTime)
         {
-            if (count < 4)
+            if (level <= 3)
             {
-                count++;
-                button_pick();
-                timer = 0.0;
-                switch (count)
+                if (count < 4)
                 {
-                    case 2:
-                        text_1.text = totalcount.ToString();
-                        break;
-                    case 3:
-                        text_2.text = totalcount.ToString();
-                        break;
-                    case 4:
-                        text_3.text = totalcount.ToString();
-                        break;
-                }
-            }
-            else if (count == 4)
-            {
-                timer = 0.0;
-                count++;
-                totalcount_reset();
-                button_reset();
-            }
-            else if (count == 5)
-            {
-                button_mix();
-                timer = 0.0;
-                count++;
-            }
-        }
-        if (pickcount == 3)
-        {
-            button_Position_reset();
-            button_reset();
-            All_reset();
-        }
-    }
-    public void button5Pick()
-    {
-        if (count < 8)
-            {
-                if (timer > waitingTime)
-                {
-                    if (count < 6)
+                    count++;
+                    button_pick();
+                    timer = 0.0;
+                    switch (count)
                     {
-                        count++;
-                        button_pick();
-                        timer = 0.0;
-
-                        switch (count)
-                        {
-                            case 2:
-                                text_1.text = totalcount.ToString();
-                                break;
-                            case 3:
-                                text_2.text = totalcount.ToString();
-                                break;
-                            case 4:
-                                text_3.text = totalcount.ToString();
-                                break;
-                            case 5:
-                                text_4.text = totalcount.ToString();
-                                break;
-                            case 6:
-                                text_5.text = totalcount.ToString();
-                                break;
-                        }
-                    }
-                    else if (count == 6)
-                    {
-                        timer = 0.0;
-                        count++;
-                        totalcount_reset();
-                        button_reset();
-                    }
-                    else if (count == 7)
-                    {
-                        button_mix();
-                        timer = 0.0;
-                        count++;
+                        case 2:
+                            text_1.text = totalcount.ToString();
+                            break;
+                        case 3:
+                            text_2.text = totalcount.ToString();
+                            break;
+                        case 4:
+                            text_3.text = totalcount.ToString();
+                            break;
                     }
                 }
-            }
-            if (pickcount == 5)
+                else if (count == 4)
+                {
+                    timer = 0.0;
+                    count++;
+                    totalcount_reset();
+                    button_reset();
+                }
+                else if (count == 5)
+                {
+                    button_mix();
+                    timer = 0.0;
+                    count++;
+                }
+                if (pickcount == 3)
                 {
                     button_Position_reset();
                     button_reset();
                     All_reset();
+                    levelPlus();
                 }
+            }
+            else if (level > 3)
+            {
+                if (count < 6)
+                {
+                    count++;
+                    button_pick();
+                    timer = 0.0;
+
+                    switch (count)
+                    {
+                        case 2:
+                            text_1.text = totalcount.ToString();
+                            break;
+                        case 3:
+                            text_2.text = totalcount.ToString();
+                            break;
+                        case 4:
+                            text_3.text = totalcount.ToString();
+                            break;
+                        case 5:
+                            text_4.text = totalcount.ToString();
+                            break;
+                        case 6:
+                            text_5.text = totalcount.ToString();
+                            break;
+                    }
+                }
+                else if (count == 6)
+                {
+                    timer = 0.0;
+                    count++;
+                    totalcount_reset();
+                    button_reset();
+                }
+                else if (count == 7)
+                {
+                    button_mix();
+                    timer = 0.0;
+                    count++;
+                }
+                if (pickcount == 5)
+                {
+                    button_Position_reset();
+                    button_reset();
+                    All_reset();
+                    levelPlus();
+                }
+            }
+        }
     }
     public void button1_ChangeImage()
     {
@@ -1670,12 +1652,11 @@ public class Pick : MonoBehaviour
     }
     public void totalcount_reset()
     {
-        totalcount = 0;
-        text_1.text = totalcount.ToString();
-        text_2.text = totalcount.ToString();
-        text_3.text = totalcount.ToString();
-        text_4.text = totalcount.ToString();
-        text_5.text = totalcount.ToString();
+        text_1.text = "";
+        text_2.text = "";
+        text_3.text = "";
+        text_4.text = "";
+        text_5.text = "";
     }
     public void levelPlus()
     {
@@ -1688,6 +1669,8 @@ public class Pick : MonoBehaviour
             case 1900: level = 6; break;
             case 2400: level = 7; break;
         }
+
+        t = true;
     }
     //버튼 위치 변경
     public Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9;
@@ -1785,13 +1768,13 @@ public class Pick : MonoBehaviour
     {       
         waitingTime = 1.0;
 
-        setTime = 5.0f;
-
         timer = 0.0;
 
         count = 1;
 
         countdownText.text = setTime.ToString();
+
+        text_1.text = ""; text_2.text = ""; text_3.text = ""; text_4.text = ""; text_5.text = "";
 
         totalcount = 0;
 
